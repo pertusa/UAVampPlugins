@@ -312,6 +312,8 @@ MF0UA::reset()
 {
     // Clear buffers, reset stored values, etc
     if (!peaks.empty()) peaks.clear();
+    bestmelodynotes.clear();
+    previousFrameBands.clear();
     origin = Vamp::RealTime::zeroTime;
     firstframe=true;
     n_time=0;

@@ -236,6 +236,7 @@ OnsetsUA::reset()
 {
     // Clear buffers, reset stored values, etc
     firstframe=true;
+    odf.clear();
 }
 
 OnsetsUA::FeatureSet
@@ -284,9 +285,10 @@ OnsetsUA::getRemainingFeatures()
 {
     FeatureSet returnFeatureSet;
 
-    for (FeatureList::iterator i = odf.begin()+1; i != odf.end()-1; i++) 
+    int n= int(odf.size());
+    for (int i=1; i+1 < n; ++i)
     {
-       Feature f=*i;
+       Feature f=odf[i];
        Feature onset;
        
        onset.hasTimestamp=true;
@@ -294,7 +296,7 @@ OnsetsUA::getRemainingFeatures()
        
        float value=f.values[0];
        
-       if (value>sensitivity && (i-1)->values[0] < value && value >= (i+1)->values[0])
+       if (value>sensitivity && odf[i-1].values[0] < value && value >= odf[i+1].values[0])
        {
           onset.values.push_back(1);
           onset.label="Onset";

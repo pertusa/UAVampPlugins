@@ -18,9 +18,18 @@ UAPlugins require boost and fftw3 libraries.
 
 ## Compilation ##
 
-OSX: make -f Makefile.osx
-Linux: make -f Makefile.linux
-Windows (from Linux with mingw): make -f Makefile.mingw
+OSX: 
+```
+make -f Makefile.osx
+```
+Linux: 
+```
+make -f Makefile.linux
+```
+Windows (from Linux with mingw): 
+```
+make -f Makefile.mingw
+```
 
 ## Algorithms ##
 

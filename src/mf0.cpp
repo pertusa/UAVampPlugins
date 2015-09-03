@@ -917,6 +917,8 @@ void MF0::cleannotes(vectorchords& melodychords)
     chord tmp(tmpnv,melodychords[i].t_ini+kMINDUR, melodychords[i].t_end+kMINDUR);
     tmpchords.push_back(tmp);
 
+    map<int,int> tmpactivenotes(activenotes);
+
     for (map<int,int>::iterator it=activenotes.begin(); it!=activenotes.end(); it++)
     {
       if (!melodychords[i].isinchord(it->first)) // note off
@@ -927,9 +929,11 @@ void MF0::cleannotes(vectorchords& melodychords)
               tmpchords[j].notes.push_back(make_pair(it->first, 127));
           }
         } 
-        activenotes.erase(it->first);
+        tmpactivenotes.erase(it->first);
      }
     }
+    
+    activenotes=tmpactivenotes;
   }
   
   melodychords=tmpchords;

@@ -38,16 +38,16 @@ PLUGIN_LIBS     = -Wl -Bstatic -lfftw3
 # Edit this to the location of the Vamp plugin SDK, relative to your
 # project directory
 #
-VAMP_SDK_DIR := ../vamp-plugin-sdk
-VAMP_UNIVERSAL_BINARY_DIR:=../vamp-plugin-sdk-2.4-binaries-osx-universal
+VAMP_SDK_DIR := ../vamp-plugin-sdk-2.6
+VAMP_BINARY_DIR:=../vamp-plugin-sdk-2.6-binaries-osx
 SRC_DIR :=./src
 
 ## OS/X binary compilation. Requires fftw3 universal: sudo port install fftw-3 +universal
 
 CXX:=g++
-CXXFLAGS:= -O3 -Wall -I$(VAMP_SDK_DIR) -I$(SRC_DIR) -fPIC -arch i386 -arch x86_64
+CXXFLAGS:= -O3 -Wall -I$(VAMP_SDK_DIR) -I$(SRC_DIR) -fPIC -arch x86_64
 PLUGIN_EXT := .dylib
-LDFLAGS := $(CXXFLAGS) -dynamiclib -install_name $(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) $(VAMP_UNIVERSAL_BINARY_DIR)/libvamp-sdk.a -exported_symbols_list vamp-plugin.list 
+LDFLAGS := $(CXXFLAGS) -dynamiclib -install_name $(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) $(VAMP_BINARY_DIR)/libvamp-sdk.a -exported_symbols_list vamp-plugin.list 
 
 ##  All of the above
 

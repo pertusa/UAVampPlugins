@@ -1,1 +1,3 @@
 *~
+*.o
+ua-vamp-plugins.dylib

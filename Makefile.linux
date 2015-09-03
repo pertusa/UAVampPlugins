@@ -1,0 +1,65 @@
+
+##  Skeleton Makefile for Vamp plugin builds using command-line tools.
+##  This requires GNU make, which is what you get with OS/X, Linux, or
+##  MinGW/Cygwin on Windows.
+##
+##  Rename this to Makefile, and edit as appropriate.
+##  This Makefile WILL NOT WORK until you have edited it as described
+##  below -- the Makefile as supplied does nothing useful at all!
+##
+##  Various sets of options are provided, commented out -- just uncomment
+##  (remove the '#' characters for) the set that most closely resembles
+##  your own situation, and adjust to taste.  Then run "gmake".
+##
+##  (For Windows builds using MS Visual Studio, start instead with the
+##  VampExamplePlugins project found in the build directory of the SDK.)
+
+# VAMP PLUGINS REQUIRE THE LIBNSDFILE LIBRARY
+# UA-PLUGINS REQUIRE THE BOOST AND FFTW3 LIBRARIES
+
+# Edit this to the base name of your plugin library
+#
+PLUGIN_LIBRARY_NAME := ua-vamp-plugins
+
+# Edit this to list the .cpp or .c files in your plugin project
+#
+PLUGIN_SOURCES := onsetsUA.cpp mf0UA.cpp plugins.cpp
+
+# Edit this to list the .h files in your plugin project
+#
+PLUGIN_HEADERS := onsetsUA.h mf0UA.h
+
+
+# Libraries required for the plugins.  Note that we can (and actively
+# want to) statically link libstdc++, because our plugin exposes only
+# a C API so there are no boundary compatibility problems.
+#
+PLUGIN_LIBS     = -Wl -Bstatic -lfftw3
+
+# Edit this to the location of the Vamp plugin SDK, relative to your
+# project directory
+#
+VAMP_SDK_DIR := ../vamp-plugin-sdk
+SRC_DIR :=./src
+
+## Linux compilation
+
+CXXFLAGS := -O3 -I$(VAMP_SDK_DIR) -I$(SRC_DIR) -Wall -fPIC
+PLUGIN_EXT := .so 
+LDFLAGS := -shared -Wl,-soname=$(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) $(VAMP_SDK_DIR)/libvamp-sdk.a -Wl,--version-script=vamp-plugin.map 
+
+##  All of the above
+
+PLUGIN_OBJECTS := $(PLUGIN_SOURCES:.cpp=.o) $(SRC_DIR)/myfft.o $(SRC_DIR)/bands.o $(SRC_DIR)/onsetdetection.o $(SRC_DIR)/combination.o $(SRC_DIR)/spectralpattern.o $(SRC_DIR)/peaksatt.o $(SRC_DIR)/graph.o $(SRC_DIR)/mf0.o
+PLUGIN_OBJECTS := $(PLUGIN_OBJECTS:.c=.o)
+
+$(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT): $(PLUGIN_OBJECTS)
+	   $(CXX) -o $@ $^ $(LDFLAGS) $(PLUGIN_LIBS)
+
+$(PLUGIN_OBJECTS): $(PLUGIN_HEADERS)
+
+clean:
+	rm -f *.o
+	rm -f $(SRC_DIR)/*.o
+	rm -f *~
+	rm -f $(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT)

@@ -1,4 +1,6 @@
- http://grfia.dlsi.ua.es/cm/projects/drims/softwareVAMP.php
+# README #
+
+## Description ##
 
 UAPlugins are a set of VAMP plugins developed by the Computer Music
 Laboratory team from the GRFIA group at the University of Alicante.
@@ -9,19 +11,21 @@ TIN2009-14247-C02), the Consolider Ingenio 2010 research programme (project
 MIPRCV, CSD2007-00018), and the PASCAL2 Network of Excellence,
 IST-2007-216886. 
 
-Dependencies
--------
+## Dependencies ##
+
 The VAMP plugin SDK requires libsndfile to be compiled. Besides, the
 UAPlugins require boost and fftw3 libraries.
 
-Compilation
--------
+## Compilation ##
+
 OSX: make -f Makefile.osx
 Linux: make -f Makefile.linux
 Windows (from Linux with mingw): make -f Makefile.mingw
 
-Onset detection
-----
+## Algorithms ##
+
+### Onset detection ###
+
 The onset detection algorithm relies on a one-semitone filterbank to
 detect abrupt energy changes in the harmonic contents of a signal. It was
 evaluated in MIREX 09 and described in the following paper:
@@ -31,8 +35,8 @@ Pertusa, A., Iñesta, J.M.
 2009 - Music Information Retrieval Evaluation eXchange, MIREX Audio Onset
 Detection, Kobe, Japan (2009)
 
-Multiple fundamental frequency estimation
-----
+### Multiple fundamental frequency estimation ###
+
 The multiple fundamental frequency estimation algorithms are described in:
 
 Pertusa, A., Iñesta, J.M.
@@ -55,3 +59,7 @@ sharp attack sounds like piano.
 These algorithms can be also be downloaded from
 http://grfia.dlsi.ua.es/cm/projects/drims/software.php to be compiled and
 executed without a VAMP host.
+
+## More info ##
+
+http://grfia.dlsi.ua.es/cm/projects/drims/softwareVAMP.php

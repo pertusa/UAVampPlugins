@@ -60,7 +60,7 @@ OnsetsUA::getPluginVersion() const
 {
     // Increment this each time you release a version that behaves
     // differently from the previous one
-    return 1;
+    return 1.1;
 }
 
 string

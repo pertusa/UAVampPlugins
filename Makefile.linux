@@ -29,12 +29,8 @@ PLUGIN_SOURCES := onsetsUA.cpp mf0UA.cpp plugins.cpp
 #
 PLUGIN_HEADERS := onsetsUA.h mf0UA.h
 
-
-# Libraries required for the plugins.  Note that we can (and actively
-# want to) statically link libstdc++, because our plugin exposes only
-# a C API so there are no boundary compatibility problems.
-#
-PLUGIN_LIBS     = -Wl -Bstatic -lfftw3
+# Libraries required for the plugins.  
+PLUGIN_LIBS     = -lfftw3
 
 # Edit this to the location of the Vamp plugin SDK, relative to your
 # project directory

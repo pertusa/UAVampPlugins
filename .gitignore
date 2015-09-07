@@ -1,3 +1,5 @@
 *~
 *.o
 ua-vamp-plugins.dylib
+ua-vamp-plugins.dll
+ua-vamp-plugins.so

@@ -35,7 +35,7 @@ PLUGIN_LIBS     = -lfftw3
 # Edit this to the location of the Vamp plugin SDK, relative to your
 # project directory
 #
-VAMP_SDK_DIR := ../vamp-plugin-sdk
+VAMP_SDK_DIR := ../vamp-plugin-sdk-2.6
 SRC_DIR :=./src
 
 ## Linux compilation

@@ -30,16 +30,16 @@ PLUGIN_HEADERS := onsetsUA.h mf0UA.h
 PLUGIN_LIBS     = -lfftw3-3
 
 # Edit this to the location of the Vamp plugin SDK compiled for MinGW, FFTW and BOOST
-VAMP_SDK_DIR := ../vamp-plugin-sdk-mingw
+VAMP_SDK_DIR := ../vamp-plugin-sdk-2.6
+LIB_VAMP_SDK_DIR := ../vamp-plugin-sdk-2.6-binaries-win32-mingw
 SRC_DIR :=./src
-FFTW_DIR:=../fftw3-mingw   # downloaded from http://www.fftw.org/install/windows.html -> ftp://ftp.fftw.org/pub/fftw/fftw-3.3.3-dll32.zip
-BOOST_DIR:=../boost_1_52_0 # Boost library directory
+FFTW_DIR:=../fftw-3.3.4-dll64 # downloaded from http://www.fftw.org/install/windows.html -> ftp://ftp.fftw.org/pub/fftw/fftw-3.3.4-dll64.zip
 
 ## MinGW compilation using Linux as the base platform
-CXX := i586-mingw32msvc-g++
-CXXFLAGS := -O2 -I$(VAMP_SDK_DIR) -I$(SRC_DIR) -I$(FFTW_DIR) -I$(BOOST_DIR) -Wall
+CXX := x86_64-w64-mingw32-g++
+CXXFLAGS := -O2 -I$(VAMP_SDK_DIR) -I$(SRC_DIR) -I$(FFTW_DIR) -I/home/jjvalero/Escritorio/VAMP -Wall
 PLUGIN_EXT := .dll
-LDFLAGS := --static-libgcc -Wl,-soname=$(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) -shared $(VAMP_SDK_DIR)/libvamp-sdk.a -L$(FFTW_DIR)
+LDFLAGS := -Wl,-soname=$(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) -shared $(LIB_VAMP_SDK_DIR)/libvamp-sdk.a -L$(FFTW_DIR)
 
 ##  All of the above
 

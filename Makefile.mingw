@@ -33,6 +33,7 @@ PLUGIN_LIBS     = -lfftw3-3
 VAMP_SDK_DIR :=../vamp-plugin-sdk-2.6-mingw
 SRC_DIR :=./src
 FFTW_DIR:=../fftw-3.3.4-dll64 # downloaded from http://www.fftw.org/install/windows.html -> ftp://ftp.fftw.org/pub/fftw/fftw-3.3.4-dll64.zip
+BOOST_DIR:=../boostpath
 
 ## MinGW compilation using Linux as the base platform
 CXX := x86_64-w64-mingw32-g++

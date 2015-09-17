@@ -29,8 +29,9 @@ PLUGIN_SOURCES := onsetsUA.cpp mf0UA.cpp plugins.cpp
 #
 PLUGIN_HEADERS := onsetsUA.h mf0UA.h
 
-# Libraries required for the plugins.  
-PLUGIN_LIBS     = -lfftw3
+# Libraries required for the plugins. fftw can be linked as static or dynamic library
+#PLUGIN_LIBS     = -lfftw3
+PLUGIN_LIBS     = /opt/local/lib/libfftw3.a
 
 # Edit this to the location of the Vamp plugin SDK, relative to your
 # project directory

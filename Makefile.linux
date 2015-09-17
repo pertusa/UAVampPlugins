@@ -29,8 +29,9 @@ PLUGIN_SOURCES := onsetsUA.cpp mf0UA.cpp plugins.cpp
 #
 PLUGIN_HEADERS := onsetsUA.h mf0UA.h
 
-# Libraries required for the plugins.  
-PLUGIN_LIBS     = -lfftw3
+# Libraries required for the plugins. fftw can be linked as static or dynamic library
+#PLUGIN_LIBS     = -lfftw3
+PLUGIN_LIBS = /usr/lib/x86_64-linux-gnu/libfftw3.a
 
 # Edit this to the location of the Vamp plugin SDK, relative to your
 # project directory
@@ -41,8 +42,8 @@ SRC_DIR :=./src
 ## Linux compilation
 
 CXXFLAGS := -O3 -I$(VAMP_SDK_DIR) -I$(SRC_DIR) -Wall -fPIC
-PLUGIN_EXT := .so 
-LDFLAGS := -shared -Wl,-soname=$(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) $(VAMP_SDK_DIR)/libvamp-sdk.a -Wl,--version-script=vamp-plugin.map 
+PLUGIN_EXT := .so
+LDFLAGS := -shared -Wl,-soname=$(PLUGIN_LIBRARY_NAME)$(PLUGIN_EXT) -lm $(VAMP_SDK_DIR)/libvamp-sdk.a -Wl,--version-script=vamp-plugin.map 
 
 ##  All of the above
 

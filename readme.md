@@ -65,9 +65,9 @@ interval. This technique is close to segmentation, and it can obtain
 reliable results when the onsets are correctly estimated, as it happens with
 sharp attack sounds like piano.
 
-These algorithms can be also be downloaded from
-http://grfia.dlsi.ua.es/cm/projects/drims/software.php to be compiled and
-executed without a VAMP host.
+These algorithms can be also be downloaded from:
+https://github.com/pertusa/mf0sp and https://github.com/pertusa/onset-bands
+to be compiled and used without a VAMP host.
 
 ## More info ##
 
